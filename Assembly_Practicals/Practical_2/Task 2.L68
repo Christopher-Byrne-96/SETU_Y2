@@ -1,0 +1,86 @@
+00001000 Starting Address
+Assembler used: EASy68K Editor/Assembler v5.16.01
+Created On: 25/01/2023 16:10:02
+
+00000000                             1  *-----------------------------------------------------------
+00000000                             2  * Title      : Task 3
+00000000                             3  * Written by : Christopher Byrne
+00000000                             4  * Date       : 25/01/2023
+00000000                             5  * Description: Use various I/O functions 
+00000000                             6  *-----------------------------------------------------------
+00001000                             7      ORG    $1000
+00001000                             8  START:                  ; first instruction of program
+00001000                             9  
+00001000                            10  * Put program code here
+00001000                            11  
+00001000                            12  ;Load text1
+00001000  43F9 00001056             13      LEA     Text1, A1
+Line 14 ERROR: Undefined symbol
+00001006  3239 004DBD16             14      MOVE.W  FFFF, D1
+0000100C  303C 0001                 15      MOVE    #1, D0
+00001010  4E4F                      16      TRAP    #15
+00001012                            17     
+00001012                            18  ;Read string from keybaord store pointer in a2
+00001012  303C 0002                 19      MOVE    #2, D0
+00001016  4E4F                      20      TRAP    #15
+00001018  3449                      21      MOVE    A1, A2
+0000101A                            22      
+0000101A                            23  ;Load text2
+0000101A  43F9 00001066             24      LEA     Text2, A1
+Line 25 ERROR: Undefined symbol
+00001020  3239 004DBD16             25      MOVE    FFFF, D1
+00001026  303C 0001                 26      MOVE    #1, D0
+0000102A  4E4F                      27      TRAP    #15
+0000102C                            28  
+0000102C                            29  ;Load entered string
+0000102C  324A                      30      MOVE    a2, a1
+0000102E  303C 000F                 31      MOVE    #15, D0
+00001032  4E4F                      32      TRAP    #15
+00001034                            33      
+00001034  303C 0005                 34      MOVE    #5, D0
+00001038  4E4F                      35      TRAP    #15
+0000103A                            36      
+0000103A                            37      
+0000103A                            38      
+0000103A  303C 0008                 39      MOVE    #8, D0
+0000103E                            40      
+0000103E                            41      
+0000103E  303C 000B                 42      MOVE    #11, D0
+00001042                            43      
+00001042                            44      
+00001042  303C 000D                 45      MOVE    #13, D0
+00001046                            46      
+00001046                            47      
+00001046  303C 0011                 48      MOVE    #17, D0
+0000104A                            49      
+0000104A                            50      
+0000104A  303C 0012                 51      MOVE    #18, D0
+0000104E                            52      
+0000104E                            53      
+0000104E  303C 0015                 54      MOVE    #21, D0
+00001052                            55      
+00001052                            56      
+00001052                            57      
+00001052                            58  
+00001052  FFFF FFFF                 59      SIMHALT             ; halt simulator
+00001056                            60  
+00001056                            61  * Put variables and constants here
+00001056                            62  
+00001056= 54 79 70 65 20 53 ...     63  Text1   DC.B 'Type Something ', 0
+00001066= 49 6D 20 67 6F 69 ...     64  Text2   DC.B 'Im going to guess what you typed', 0
+00001087= 54 68 69 6E 6B 69 ...     65  Text3   DC.B 'Thinking...', 0
+00001093                            66  
+00001093                            67  
+00001093                            68      END    START        ; last line of source
+
+2 errors detected
+No warnings generated
+
+
+SYMBOL TABLE INFORMATION
+Symbol-name         Value
+-------------------------
+START               1000
+TEXT1               1056
+TEXT2               1066
+TEXT3               1087

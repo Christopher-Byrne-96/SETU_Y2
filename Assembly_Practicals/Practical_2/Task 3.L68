@@ -1,0 +1,117 @@
+00001000 Starting Address
+Assembler used: EASy68K Editor/Assembler v5.16.01
+Created On: 25/01/2023 16:47:23
+
+00000000                             1  *-----------------------------------------------------------
+00000000                             2  * Title      : Task 3
+00000000                             3  * Written by : Christopher Byrne
+00000000                             4  * Date       : 25/01/2023
+00000000                             5  * Description: Use various I/O functions 
+00000000                             6  *-----------------------------------------------------------
+00001000                             7      ORG    $1000
+00001000                             8  START:                  ; first instruction of program
+00001000                             9  
+00001000                            10  * Put program code here
+00001000                            11  
+00001000                            12  ;Load text1
+00001000  43F9 0000109E             13      LEA     Text1, A1
+00001006  323C 00FF                 14      MOVE.W  #255, D1
+0000100A  303C 0000                 15      MOVE    #0, D0
+0000100E  4E4F                      16      TRAP    #15
+00001010                            17     
+00001010                            18  ;Read string from keybaord store pointer in a2
+00001010  303C 0002                 19      MOVE    #2, D0
+00001014  4E4F                      20      TRAP    #15
+00001016  3449                      21      MOVE    A1, A2
+00001018                            22      
+00001018                            23  ;Load text2
+00001018  43F9 000010AE             24      LEA     Text2, A1
+0000101E  323C 00FF                 25      MOVE.W  #255, D1
+00001022  303C 0000                 26      MOVE    #0, D0
+00001026  4E4F                      27      TRAP    #15
+00001028                            28  
+00001028                            29  ;Load entered string
+00001028  324A                      30      MOVE    A2, A1
+0000102A  4E4F                      31      TRAP    #15
+0000102C                            32      
+0000102C                            33  ;Load text3
+0000102C  43F9 000010BB             34      LEA     Text3, A1
+00001032  323C 00FF                 35      MOVE.W  #255, D1
+00001036  303C 0000                 36      MOVE    #0, D0
+0000103A  4E4F                      37      TRAP    #15
+0000103C                            38      
+0000103C                            39      
+0000103C  303C 0005                 40      MOVE    #5, D0
+00001040  4E4F                      41      TRAP    #15
+00001042  3401                      42      MOVE    D1, D2
+00001044                            43      
+00001044                            44  ;Load text4
+00001044  43F9 000010E0             45      LEA     Text4, A1
+0000104A  323C 00FF                 46      MOVE.W  #255, D1
+0000104E  303C 0000                 47      MOVE    #0, D0
+00001052  4E4F                      48      TRAP    #15
+00001054                            49      
+00001054  3202                      50      MOVE    D2, D1 
+00001056  303C 0006                 51      MOVE    #6, D0
+0000105A  4E4F                      52      TRAP    #15
+0000105C  1202                      53      MOVE.B  D2, D1    
+0000105E                            54      
+0000105E                            55  ;GET AND DISPLAY TIME IN MILISECONDS SINCE MIDNIGHT    
+0000105E  303C 0008                 56      MOVE    #8, D0
+00001062  4E4F                      57      TRAP    #15
+00001064  43F9 000010EF             58      LEA     Time, A1
+0000106A  323C 00FF                 59      MOVE.W  #255, D1
+0000106E  303C 0000                 60      MOVE    #0, D0
+00001072  4E4F                      61      TRAP    #15
+00001074  323C 000A                 62      MOVE    #10, D1
+00001078  303C 0003                 63      MOVE    #3, D0
+0000107C  4E4F                      64      TRAP    #15
+0000107E                            65      
+0000107E                            66  ;CLEAR SCREEN    
+0000107E  303C 000B                 67      MOVE    #11, D0
+00001082  323C FF00                 68      MOVE    #65280, D1
+00001086  4E4F                      69      TRAP    #15
+00001088                            70      
+00001088                            71  
+00001088  303C 000D                 72      MOVE    #13, D0
+0000108C  4E4F                      73      TRAP    #15
+0000108E                            74      
+0000108E                            75      
+0000108E  303C 0011                 76      MOVE    #17, D0
+00001092                            77      
+00001092                            78      
+00001092  303C 0012                 79      MOVE    #18, D0
+00001096                            80      
+00001096                            81      
+00001096  303C 0015                 82      MOVE    #21, D0
+0000109A                            83      
+0000109A                            84      
+0000109A                            85      
+0000109A                            86  
+0000109A  FFFF FFFF                 87      SIMHALT             ; halt simulator
+0000109E                            88  
+0000109E                            89  * Put variables and constants here
+0000109E                            90  
+0000109E= 54 79 70 65 20 53 ...     91  Text1   DC.B 'Type Something ', 0
+000010AE= 59 6F 75 20 74 79 ...     92  Text2   DC.B 'You typed : ', 0
+000010BB= 45 6E 74 65 72 20 ...     93  Text3   DC.B 'Enter a character from the keyboard ', 0
+000010E0= 59 6F 75 20 65 6E ...     94  Text4   DC.B 'You entered : ', 0
+000010EF= 54 69 6D 65 20 73 ...     95  Time    DC.B 'Time since midnight ', 0
+00001104                            96  
+00001104                            97  
+00001104                            98  
+00001104                            99      END    START        ; last line of source
+
+No errors detected
+No warnings generated
+
+
+SYMBOL TABLE INFORMATION
+Symbol-name         Value
+-------------------------
+START               1000
+TEXT1               109E
+TEXT2               10AE
+TEXT3               10BB
+TEXT4               10E0
+TIME                10EF

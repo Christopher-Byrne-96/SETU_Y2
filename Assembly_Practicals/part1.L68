@@ -1,0 +1,52 @@
+00001000 Starting Address
+Assembler used: EASy68K Editor/Assembler v5.16.01
+Created On: 18/01/2023 16:38:47
+
+00000000                             1  *-----------------------------------------------------------
+00000000                             2  * Title      : PART 1 
+00000000                             3  * Written by : CHRISTOPHER BYRNE
+00000000                             4  * Date       : 11/01/2023
+00000000                             5  * Description: MOVING DATA FROM REGISTERS TO MEMORY 
+00000000                             6  *-----------------------------------------------------------
+00001000                             7      ORG    $1000
+00001000                             8  START:                  ; first instruction of program
+00001000                             9  
+00001000                            10  * Put program code here
+00001000                            11  
+00001000  123C 0009                 12      MOVE.B  #9,D1       ;MOVE LITERAL VALUE 9 INTO DATA REGISTER D1 
+00001004  1401                      13      MOVE.B  D1,D2       ;MOVE THE VALUE STORED IN D1 TO D2 
+00001006  11C1 044C                 14      MOVE.B  D1,1100     ;MOVE THE VALUE IN D1 TO 1100 WHICH IS MEMORY LOCATION 044C
+0000100A  1438 044C                 15      MOVE.B  1100,D2     ;MOVE VALUE IN 044C T0 0064
+0000100E  11F8 044C 0064            16      MOVE.B  1100,100    ;MEMORY LOCATION FOR 100 IS 0064 CONTENTS ARE 09 IN HEX
+00001014                            17  
+00001014                            18  
+00001014                            19  
+00001014                            20  
+00001014                            21  
+00001014                            22  
+00001014                            23  
+00001014                            24  
+00001014                            25  
+00001014                            26  
+00001014                            27  
+00001014                            28  
+00001014                            29  
+00001014                            30  
+00001014                            31  
+00001014                            32  
+00001014                            33  
+00001014                            34  
+00001014  FFFF FFFF                 35      SIMHALT             ; halt simulator
+00001018                            36  
+00001018                            37  * Put variables and constants here
+00001018                            38  
+00001018                            39      END    START        ; last line of source
+
+No errors detected
+No warnings generated
+
+
+SYMBOL TABLE INFORMATION
+Symbol-name         Value
+-------------------------
+START               1000

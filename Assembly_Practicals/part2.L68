@@ -1,0 +1,40 @@
+00001000 Starting Address
+Assembler used: EASy68K Editor/Assembler v5.16.01
+Created On: 18/01/2023 16:40:35
+
+00000000                             1  *-----------------------------------------------------------
+00000000                             2  * Title      : Part 2
+00000000                             3  * Written by : Christopher Byrne
+00000000                             4  * Date       : 11/01/2023
+00000000                             5  * Description: Example of input output wiht Trap #15
+00000000                             6  *-----------------------------------------------------------
+00001000                             7      ORG    $1000
+00001000                             8  START:                  ; first instruction of program
+00001000                             9  
+00001000                            10  * Put program code here
+00001000  123C 0009                 11      MOVE.B #9,D1        
+00001004  43F9 0000101A             12      LEA text, A1        ; Puts the memory location of text int A1
+0000100A  303C 000E                 13      MOVE #14,D0         ; 14 in D0 tells the TRAP #15 function to display whats in A1
+0000100E  4E4F                      14      TRAP #15            ; Command used for I/O
+00001010                            15      
+00001010  303C 0003                 16      MOVE #3,D0          ; 3 tells the TRAP #15 function to display number stored in D1
+00001014  4E4F                      17      TRAP #15
+00001016                            18  
+00001016                            19  
+00001016  FFFF FFFF                 20      SIMHALT             ; halt simulator
+0000101A                            21  
+0000101A                            22  * Put variables and constants here
+0000101A= 44 61 74 61 20 52 ...     23  text dc.b 'Data Register: ',0
+0000102A                            24  
+0000102A                            25  
+0000102A                            26      END    START        ; last line of source
+
+No errors detected
+No warnings generated
+
+
+SYMBOL TABLE INFORMATION
+Symbol-name         Value
+-------------------------
+START               1000
+TEXT                101A

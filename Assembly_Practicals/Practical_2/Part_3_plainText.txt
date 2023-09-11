@@ -1,0 +1,180 @@
+*-----------------------------------------------------------
+* Title      : Task 3
+* Written by : Christopher Byrne
+* Date       : 25/01/2023
+* Description: Use various I/O functions 
+*-----------------------------------------------------------
+    ORG    $1000
+START:                  ; first instruction of program
+
+* Put program code here
+
+;Load text1
+    LEA     Text1, A1
+    MOVE.W  #FFFFD1
+    MOVE    #1, D0
+    TRAP    #15
+   
+;Read string from keybaord store pointer in a2
+    MOVE    #2, D0
+    TRAP    #15
+*-----------------------------------------------------------
+* Title      : Task 3
+* Written by : Christopher Byrne
+* Date       : 25/01/2023
+* Description: Use various I/O functions 
+*-----------------------------------------------------------
+    ORG    $1000
+START:                  ; first instruction of program
+
+* Put program code here
+
+;Load text1
+    LEA     Text1, A1
+    MOVE.W  #255, D1
+    MOVE    #0, D0
+    TRAP    #15
+   
+;Read string from keybaord store pointer in a2
+    MOVE    #2, D0
+    TRAP    #15
+    MOVE    A1, A2
+    
+;Load text2
+    LEA     Text2, A1
+    MOVE.W  #255, D1
+    MOVE    #0, D0
+    TRAP    #15
+
+;Load entered string
+    MOVE    A2, A1
+    TRAP    #15
+    
+;Load text3
+    LEA     Text3, A1
+    MOVE.W  #255, D1
+    MOVE    #0, D0
+    TRAP    #15
+    
+    
+    MOVE    #5, D0
+    TRAP    #15
+    MOVE    D1, D2
+    
+;Load text4
+    LEA     Text4, A1
+    MOVE.W  #255, D1
+    MOVE    #0, D0
+    TRAP    #15
+    
+*-----------------------------------------------------------
+* Title      : Task 3
+* Written by : Christopher Byrne
+* Date       : 25/01/2023
+* Description: Use various I/O functions 
+*-----------------------------------------------------------
+    ORG    $1000
+START:                  ; first instruction of program
+
+* Put program code here
+
+;Load text1
+    LEA     Text1, A1
+    MOVE.W  #255, D1
+    MOVE    #0, D0
+    TRAP    #15
+   
+;Read string from keybaord store pointer in a2
+    MOVE    #2, D0
+    TRAP    #15
+    MOVE    A1, A2
+    
+;Load text2
+    LEA     Text2, A1
+    MOVE.W  #255, D1
+    MOVE    #0, D0
+    TRAP    #15
+
+;Load entered string
+    MOVE    A2, A1
+    TRAP    #15
+    
+;Load text3
+    LEA     Text3, A1
+    MOVE.W  #255, D1
+    MOVE    #0, D0
+    TRAP    #15
+    
+    
+    MOVE    #5, D0
+    TRAP    #15
+    MOVE    D1, D2
+    
+;Load text4
+    LEA     Text4, A1
+    MOVE.W  #255, D1
+    MOVE    #0, D0
+    TRAP    #15
+    
+    MOVE    D2, D1 
+    MOVE    #6, D0
+    TRAP    #15
+    MOVE.B  D2, D1    
+    
+;GET AND DISPLAY TIME IN MILISECONDS SINCE MIDNIGHT    
+    MOVE    #8, D0
+    TRAP    #15
+    LEA     Time, A1
+    MOVE.W  #255, D1
+    MOVE    #0, D0
+    TRAP    #15
+    MOVE    #10, D1
+    MOVE    #3, D0
+    TRAP    #15
+    
+    
+;Confirm to clear screen(not an if just to pause before screen clears)    
+    LEA     CLS, A1
+    MOVE.W  #255, D1
+    MOVE    #0, D0
+    TRAP    #15
+    
+    MOVE    #5, D0
+    TRAP    #15
+    
+;CLEAR SCREEN    
+    MOVE    #11, D0
+    MOVE    #65280, D1
+    TRAP    #15
+    
+;dISPLAY LAST STRING SAVED BEFORE CLEAR SCREEN 
+    MOVE    #13, D0
+    TRAP    #15
+    
+    
+    MOVE    #17, D0
+    
+    
+    MOVE    #18, D0
+    
+    
+    MOVE    #21, D0
+    
+    
+    
+
+    SIMHALT             ; halt simulator
+
+* Put variables and constants here
+
+Text1   DC.B 'Type Something ', 0
+Text2   DC.B 'You typed : ', 0
+Text3   DC.B 'Enter a character from the keyboard ', 0
+Text4   DC.B 'You entered : ', 0
+Time    DC.B 'Time since midnight ', 0
+CLS     DC.B 'To clear screen press any key', 0
+
+
+
+    END    START        ; last line of source
+

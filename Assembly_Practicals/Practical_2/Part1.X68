@@ -1,0 +1,37 @@
+*-----------------------------------------------------------
+* Title      : Gamer Points
+* Written by : Christopher Byrne 
+* Date       : 18/01/2023
+* Description: To display 2 different dtrings and read an integer from the keyboard and display it 
+*-----------------------------------------------------------
+    ORG    $1000
+START:                  ; first instruction of program
+
+    
+
+* Put program code here
+
+    LEA text1, A1   ;TEXT1 ADDRESS LOADED INTO A1
+    MOVE #14, D0    ;SETTING UP INTERUPT TO DISPLAY TEXT1
+    TRAP #15        ;INTERUPT TO DISPLAY TEXT
+    MOVE #4,D0      ;SETTING UP INTERRUPT TO READ AN INTEGER FROM THE KEYBOARD
+    TRAP #15        ;GAMER POINTS STORED IN D1
+    LEA text2, A1   ;TEXT2 ADDRESS LOADED INTO A1
+    MOVE #14, D0    ;SETTING UP INTERRUPT TO DISPLAY TEXT2
+    TRAP #15        ;INTERRUPT TO DISPLAY TEXT
+    MOVE #3, D0     ;SETTING UP INTERRUPT TO DISPLAY INTEGER STORED IN D1
+    TRAP #15        ;DISPLAYING INTEGER STORED IN D1
+
+    SIMHALT             ; halt simulator
+
+* Put variables and constants here
+
+text1 dc.b 'Enter your gamer points: ',0
+text2 dc.b 'your gamer points = ',0
+
+    END    START        ; last line of source
+
+*~Font name~Courier New~
+*~Font size~10~
+*~Tab type~1~
+*~Tab size~4~
